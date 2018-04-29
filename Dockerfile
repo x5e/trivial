@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
-RUN apt-get update && apt-get install -y netcat
-COPY . .
-#CMD watch -n 0 "printf 'HTTP/1.0 200 OK\r\n\r\nOkay' | nc -l 8080" > /dev/null < /dev/null
-#CMD ["bash", "-c", "for i in `seq 1 3`; do printf 'HTTP/1.0 200 OK\r\n\r\nOkay' | nc -l 8080; done"]
-#CMD ["bash", "-c", "for i in 1 2 3; do printf 'HTTP/1.0 200 OK\r\n\r\nOkay' | nc -l 8080; done"]
+RUN apt-get update 
+RUN apt-get install -y python3
+RUN apt-get install -y curl
+CMD python3 -m http.server 8080
+HEALTHCHECK --interval=1s CMD curl --fail http://localhost:8080/ || exit 1
+EXPOSE 8080

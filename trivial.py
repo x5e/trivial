@@ -8,5 +8,5 @@ def trivial(environ, start_response):
 
 if __name__ == "__main__":
     from wsgiref.simple_server import make_server
-    with make_server('', 8000, trivial) as httpd:
+    with make_server('', 1980, trivial) as httpd:
         httpd.serve_forever()
