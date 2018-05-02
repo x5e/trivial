@@ -1,0 +1,4 @@
+*.out
+.dockerignore
+Dockerfile
+.git
